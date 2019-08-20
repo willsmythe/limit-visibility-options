@@ -1,2 +1,3 @@
-# limit-visibility-options
-Policy for limiting repo visibility options
+# Limit repo visibility policy
+
+Policy that limits repos from being public. Non-compliant (public) repos are switched to private visibility.

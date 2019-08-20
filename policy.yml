@@ -1,0 +1,19 @@
+# Policy that limits repos from being public. 
+# 
+# Non-compliant (public) repos are switched to private visibility.
+
+name: Limit repo visibility options to private or internal
+author: GitHub
+
+applies-to:
+  resource.type: repository
+
+desired-state:
+  - eval: resource.visibility != 'public'
+
+enforce:
+  action:
+    uses: actions/set-property
+    with:
+      property:
+        visibility: private
