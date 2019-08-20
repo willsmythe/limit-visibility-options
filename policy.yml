@@ -5,15 +5,24 @@
 name: Limit repo visibility options to private or internal
 author: GitHub
 
+parameters:
+  defaultVisibility:
+    type: enum
+    default: private
+    description: Change the visibility of non-compliant repos to?
+    values:
+      - private
+      - internal
+
 applies-to:
   resource.type: repository
 
 desired-state:
   - eval: resource.visibility != 'public'
-
+  
 enforce:
   action:
     uses: actions/set-property
     with:
       property:
-        visibility: private
+        visibility: ${{ parameters.defaultVisibility }}
