@@ -1,6 +1,6 @@
 # Limit repo visibility policy
 
-Policy that limits repos from being public. Non-compliant (public) repos are switched to private visibility.
+Policy that limits repos from being public. Non-compliant (public) repos are switched to either private or internal (when the repo is part of an enterprise account).
 
 ## To use
 
