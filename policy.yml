@@ -1,28 +1,15 @@
 # Policy that limits repos from being public. 
 # 
-# Non-compliant (public) repos are switched to private visibility.
+# Non-compliant (public) repos are switched to either private or internal visibility based on whether the repo is in an Enterprise-backed org.
 
 name: Limit repo visibility options to private or internal
 author: GitHub
-
-parameters:
-  defaultVisibility:
-    type: enum
-    default: private
-    description: Change the visibility of non-compliant repos to?
-    values:
-      - private
-      - internal
 
 applies-to:
   resource.type: repository
 
 desired-state:
-  - eval: resource.visibility != 'public'
+  eval: resource.visibility != 'public'
   
 enforce:
-  action:
-    uses: actions/set-property
-    with:
-      property:
-        visibility: ${{ parameters.defaultVisibility }}
+  action: ./actions/fix-repo-visibility    # custom Action defined in this repo

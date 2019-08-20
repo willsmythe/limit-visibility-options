@@ -1,0 +1,6 @@
+name: Fix repo visibility
+author: GitHub
+
+runs:
+  using: node12
+  main: main.js
